@@ -7,5 +7,6 @@ var userValidation = require('../user.component/user.validation')
 let router = express.Router()
 
 router.route("/usersignup").post(multersave('user').single('image'),userValidation.userSignUp(),userControllers.signup)
+router.route("/usersignin").post(requireSignIn,userValidation.userSignIn(),userControllers.userSignin)
 
 module.exports = router;

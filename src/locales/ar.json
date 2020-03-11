@@ -1,3 +1,9 @@
 {
-    
+	"password mismatch": "password mismatch",
+	"Username is required": "Username is required",
+	"password is Required": "password is Required",
+	"phone number is required": "phone number is required",
+	"type is required": "type is required",
+	"wrong user type": "wrong user type",
+	"userNotFound": "userNotFound"
 }

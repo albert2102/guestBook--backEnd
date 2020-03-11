@@ -1,7 +1,7 @@
 var { Schema } = require ( "mongoose");
 var mongoose = require('mongoose');
 var autoIncrement = require ( "mongoose-auto-increment");
-
+var bcrypt = require('bcryptjs');
 const userSchema = new Schema(
   {
     _id: {
@@ -36,6 +36,13 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
+userSchema.methods.isValidPassword = function (newPassword, callback) {
+  let user = this;
+  bcrypt.compare(newPassword, user.password, function (err, isMatch) {
+    if (err) return callback(err);
+    callback(null, isMatch);
+  });
+};
 
 userSchema.set("toJSON", {
   transform: function (doc, ret, options) {
